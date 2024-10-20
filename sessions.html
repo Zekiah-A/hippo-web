@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Hippo Casino</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="styles.css">
+	<script type="importmap">
+			{
+				"imports": {
+					"lit": "/lib/lit.core.min.js",
+					"lit/html": "/lib/lit.core.min.js",
+					"lit/css": "/lib/lit.core.min.js",
+					"app": "/src/app.js",
+					"hippo-header": "/src/hippo-header.js",
+					"hippo-footer": "/src/hippo-footer.js",
+					"event-table": "/src/event-table.js",
+					"notification-ribbon": "/src/notification-ribbon.js"
+				}
+			}
+		</script>
+	<script type="module" src="./src/app.js"></script>
+</head>
+<body>
+	<hippo-header page="sessions">
+		<span slot="title">Hippo Casino: Sessions</span>
+	</hippo-header>
+	<main>
+		<section>
+			<h3>Our sessions:</h3>
+			<event-table>
+			</event-table>
+		</section>
+	</main>
+</body>
+</html>

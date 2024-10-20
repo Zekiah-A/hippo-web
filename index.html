@@ -1,11 +1,78 @@
 <!doctype html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Lit Starter Kit</title>
-  </head>
-  <body>
-    <a href="/dev/index.html">Component Demo</a>
-  </body>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Hippo Casino</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="styles.css">
+		<script type="importmap">
+			{
+				"imports": {
+					"lit": "/lib/lit.core.min.js",
+					"lit/html": "/lib/lit.core.min.js",
+					"lit/css": "/lib/lit.core.min.js",
+					"app": "/src/app.js",
+					"hippo-header": "/src/hippo-header.js",
+					"hippo-footer": "/src/hippo-footer.js",
+					"event-table": "/src/event-table.js",
+					"notification-ribbon": "/src/notification-ribbon.js"
+				}
+			}
+		</script>
+		<script type="module" src="./src/app.js"></script>
+	</head>
+	<body>
+		<hippo-header page="index"></hippo-header>
+		<main>
+			<section>
+				<article>
+					<h1>A games and gambling club located in Victory House Flat 9</h1>
+					<p>
+						Join us for competitive and friendly games of mahjong, poker, blackjack and more!
+						
+					</p>
+				</article>
+				<article>
+					<h2>Opportunities:</h2>
+					<ul>
+						<li>Learn new games and practice with real cards and chips.</li>
+						<li>Play against others and improve your skills.</li>
+						<li>Hit big and win cash rewards and prizes.</li>
+						<li>Meet others at our public sessions.</li>
+					</ul>
+				</article>
+			</section>
+			<section>
+				<h2>Learn more:</h2>
+				<section class="services">
+					<article class="service">
+						<h3>Our venue:</h3>
+						<figure>
+							<img alt="victory house" src="assets/victory-house.jpg">
+							<figcaption>
+								We hold regular physical sessions on-campus in the victory house
+								student accomodation building, and is easily accessible, allowing
+								for anyone to come play on a whim.
+							</figcaption>
+						</figure>	
+					</article>
+					<article class="service">
+						<h3>Our logo:</h3>
+						<figure>
+							<img alt="logo" src="assets/dripped-out-hippo-logo.webp">
+							<figcaption>
+								Our mascot, <em>Dripped Out Hippo</em>, nicknamed '<em>Drippo</em>' is a stylish
+								critter inspired by the popular <a href="https://www.youtube.com/shorts/FVvNECkaWT4">short video</a>,
+								and represents the fun and exciting aspects of our casino.
+							</figcaption>
+						</figure>
+					</article>
+					<p>
+						<br>
+						<a class="link-button para-button" href="/sessions">Join us</a>
+					</p>
+				</section>	
+			</section>
+		</main>
+	</body>
 </html>
