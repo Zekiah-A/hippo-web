@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors' // Import cors middleware
 import { red, green } from 'ansis/colors'
 import * as fs from 'fs'
 import path from 'path'
@@ -23,6 +24,11 @@ const argv = yargs(hideBin(process.argv))
 const app = express()
 const port = 80
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
+
+app.use(cors({
+	origin: ['http://localhost', 'http://localhost:80'],
+	credentials: true,
+}))
 
 app.get("*", (req, res) => {
 	let resourcePath = req.path;

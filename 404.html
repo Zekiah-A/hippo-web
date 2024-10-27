@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Hippo Casino: 404</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <script type="importmap">
         {
@@ -15,7 +16,8 @@
                 "hippo-header": "/src/hippo-header.js",
                 "hippo-footer": "/src/hippo-footer.js",
                 "event-table": "/src/event-table.js",
-                "notification-ribbon": "/src/notification-ribbon.js"
+                "notification-ribbon": "/src/notification-ribbon.js",
+                "login-signup": "/src/login-signup.js"
             }
         }
     </script>
@@ -23,13 +25,15 @@
 </head>
 <body>
     <hippo-header>
-		<span slot="title">Error 404</span>
+		<span slot="title">Hippo Casino: Error</span>
     </hippo-header>
     <main>
+        <h1>404: Not found</h1>
         <p>
             <em>Oh no! We're lost at sea!</em>
         </p>
         <a href="javascript:history.back()">Go back!</a>
     </main>
+    <hippo-footer></hippo-footer>
 </body>
 </html>

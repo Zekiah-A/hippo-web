@@ -19,7 +19,7 @@ body {
 
 main {
 	flex-grow: 1;
-	width: min(calc(100% - 64px), 1200px);
+	width: min(calc(100% - 32px), 1200px);
 	align-self: center;
 }
 
@@ -79,7 +79,7 @@ article.service figure {
 	row-gap: 8px;
 }
 
-input[type="button"], button[type="button"], .link-button {
+input[type="button"], button[type="button"], button[type="submit"], .link-button {
 	padding: 12px 24px 12px 24px;
 	font-size: 12pt;
 	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.301);
@@ -97,6 +97,28 @@ input[type="button"], button[type="button"], .link-button {
 
 p:has(.para-button) {
 	text-align: center;
+}
+
+details {
+	border: 2px solid #afe6d3;
+	padding: 8px;
+	margin-bottom: 8px;
+}
+
+details > section {
+	margin-top: 8px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 8px;
+}
+
+summary {
+	user-select: none;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
 }
 
 @media only screen and (max-width:786px) {

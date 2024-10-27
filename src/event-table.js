@@ -25,14 +25,7 @@ class EventTable extends LitElement {
 
 	constructor() {
 		super();
-		this.events = [
-			{
-				date: "Monday",
-				time: "From/until 10PM",
-				event: "Poker games night",
-				session: "Taster"
-			}
-		];
+		this.events = [];
 	}
 
 	render() {

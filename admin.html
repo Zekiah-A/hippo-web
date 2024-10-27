@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Hippo Casino: Admin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+	<link rel="stylesheet" href="styles.css">
+	<script type="importmap">
+		{
+			"imports": {
+				"lit": "/lib/lit.core.min.js",
+				"lit/html": "/lib/lit.core.min.js",
+				"lit/css": "/lib/lit.core.min.js",
+				"app": "/src/app.js",
+				"hippo-header": "/src/hippo-header.js",
+				"hippo-footer": "/src/hippo-footer.js",
+				"event-table": "/src/event-table.js",
+				"notification-ribbon": "/src/notification-ribbon.js",
+				"login-signup": "/src/login-signup.js",
+				"alert-dialog": "/src/alert-dialog.js"
+			}
+		}
+	</script>
+	<script type="module" src="./src/app.js"></script>
+</head>
+<body>
+	<hippo-header page="admin">
+		<span slot="title">Hippo Casino: Admin</span>
+	</hippo-header>
+	<main>
+		<section>
+			<h2>General</h2>
+			<details>
+				<summary>Search accounts</summary>
+				<section>
+					<input type="text" placeholder="Enter username / ID">
+					<button type="button">Search</button>
+				</section>
+			</details>
+			<details>
+				<summary>Conversion calculator</summary>
+				<section>
+					<h3>Chips - hippocoin:</h3>
+					<label>from:</label>
+					<input type="number" placeholder="Value">
+					<select>
+						<option>chips (CHP) to hippocoin (HC)</option>
+						<option>hippcoin (HC) to chips (CHP)</option>
+					</select>
+					<button type="button">Convert</button>
+				</section>
+				<hr>
+				<section>
+					<h3>Hippocoin - pounds:</h3>
+					<input type="number" placeholder="Account ID">
+					<input type="text" placeholder="Coupon/event codes">
+					<input type="number" placeholder="Value">
+					<select>
+						<option>hippocoin (HC) to pounds (GBP)</option>
+						<option>pounds (GBP) to hippocoin (HC)</option>
+					</select>
+					<button type="button">Convert</button>
+				</section>
+			</details>
+		</section>
+		<section>
+			<h2>Admin:</h2>
+			<details>
+				<summary>Generate loan</summary>
+				<section>
+					<input type="number" placeholder="Account ID">
+					<input type="number" placeholder="Loan amount (HC)">
+					<input type="text" placeholder="Loan reason">
+					<p>
+						Loans are taken from the casino liquid balance. Loans of value
+						greater than (casino balance/account count) can not be created.
+					</p>
+					<button type="button">Generate</button>	
+				</section>
+			</details>
+			<details>
+				<summary>Transfer balance</summary>
+				<section>
+					<input type="number" placeholder="Sender account ID">
+					<input type="number" placeholder="Recipient account ID">
+					<input type="number" placeholder="Transfer amount (HC)">
+					<input type="text" placeholder="Transfer reason">
+					<button type="button">Transfer</button>
+				</section>
+			</details>
+			<details>
+				<summary>Withdraw balance</summary>
+				<section>
+					<input type="number" placeholder="Recipient account ID">
+					<input type="number" placeholder="Transfer amount (HC)">
+					<input type="text" placeholder="Transfer reason">
+					<button type="button">Transfer</button>
+				</section>
+			</details>
+			<details>
+				<summary>Create account</summary>
+				<section>
+					<h2>Create Account</h2>
+					<form id="createAccountForm">
+						<label>
+							First name:
+							<input type="text" name="firstName" required />
+						</label>
+						<label>
+							Last name:
+							<input type="text" name="lastName" required />
+						</label>
+						<label>
+							Email:
+							<input type="email" name="email" required />
+						</label>
+						<button type="submit">Create Account</button>
+					</form>
+				</section>
+			</details>
+			<details>
+				<summary>Modify account</summary>
+				<section>
+					<input type="number" placeholder="Account ID">
+					<button type="button">Load account</button>
+					<button type="button">Modify account</button>
+				</section>
+			</details>
+			<details>
+				<summary>View account notes</summary>
+				<section>
+					<input type="number" placeholder="Account ID">
+					<button type="button">Load notes</button>
+				</section>
+			</details>
+			<details>
+				<summary>View transaction history</summary>
+				<section>
+					<input type="number" placeholder="Account ID">
+					<button type="button">Load history</button>
+				</section>
+			</details>
+			<p>
+				⚠️ <em>Administrator actions are logged and recorded. Act with caution.</em>
+			</p>
+		</section>
+	</main>
+	<hippo-footer></hippo-footer>
+</body>
+<script type="module" defer>
+	import { serverAddress } from "app";
+	import { AlertDialog } from "alert-dialog";
+
+	async function handleCreateAccount(event) {
+		event.preventDefault()
+		const formData = new FormData(document.getElementById("createAccountForm"));
+		const accountData = {
+			firstName: formData.get("firstName"),
+			lastName: formData.get("lastName"),
+			email: formData.get("email")
+		};
+
+		try {
+			const response = await fetch(`${serverAddress}/accounts/create`, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(accountData)
+			});
+
+			if (response.ok) {
+				AlertDialog.open("Account successfully created!");
+			}
+			else {
+				AlertDialog.open("Failed to create account.");
+			}
+		}
+		catch (error) {
+			console.error("Error:", error);
+			AlertDialog.open("Failed to create account. An error occurred.");
+		}
+	}
+    createAccountForm.addEventListener("submit", handleCreateAccount);
+</script>
+</html>

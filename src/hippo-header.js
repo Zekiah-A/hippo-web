@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import "login-signup";
 
 class HippoHeader extends LitElement {
 	static styles = css`
@@ -61,6 +62,10 @@ class HippoHeader extends LitElement {
 			display: none;
 			padding: 12px;
 			height: 40px;
+			margin-right: 8px;
+		}
+
+		.login-button {
 			margin-left: auto;
 			margin-right: 8px;
 		}
@@ -151,6 +156,7 @@ class HippoHeader extends LitElement {
 						<li class="nav-item ${this.page === 'profile' ? 'current-page' : ''}"><a href="/profile">Profile</a></li>
 						<li class="nav-item ${this.page === 'admin' ? 'current-page' : ''}"><a href="/admin">Admin</a></li>
 					</ul>
+					<login-signup class="login-button"></login-signup>
 					<button type="button" class="hamburger-button" @click="${this.toggleMenu}">
 						<img alt="menu" src="assets/hamburger-bars.svg">
 					</button>

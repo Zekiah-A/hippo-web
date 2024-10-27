@@ -1,5 +1,3 @@
-
-
 import { LitElement, html, css } from "lit";
 
 class HippoFooter extends LitElement {
@@ -30,7 +28,7 @@ class HippoFooter extends LitElement {
 			<footer>
 				<span>Copyright © 2024 High Stakes Collective</span>
 				<hr>
-				<a href="mailto://qsm24gru@uea.ac.uk">Contact us</a>
+				<a href="mailto://admin@hippo.casino">Contact us</a>
 			</footer>
 		`
 	}
